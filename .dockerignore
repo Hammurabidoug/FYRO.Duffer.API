@@ -19,3 +19,5 @@ global.json
 packages/
 test-results/
 TestResults/
+**/appsettings.Development.json
+launch.json
