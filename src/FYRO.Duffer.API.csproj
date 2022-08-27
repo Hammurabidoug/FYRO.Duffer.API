@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>fyro-duffer-api-2e7a2424-1f37-485c-992c-93e83be5bef4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
