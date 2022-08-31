@@ -3,7 +3,8 @@ name: Build and push Duffer API image to GCP
 
 on:
   push:
-    branches: [ main ]
+    tags:
+    - 'v*'
 
   workflow_dispatch:
     
@@ -32,9 +33,13 @@ jobs:
         run: |-
           gcloud auth configure-docker --quiet
       
+      - name: 'Get Version'
+        id: version
+        uses: battila7/get-version-action@v2
+
       - name: Push Docker image to container registry (GCR)
         env:
-          GIT_TAG: v0.1.0
+          GIT_TAG: ${{ steps.version.outputs.version }}
         run: |-
           docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
           docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
