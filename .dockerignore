@@ -21,3 +21,4 @@ test-results/
 TestResults/
 **/appsettings.Development.json
 launch.json
+*key.json
