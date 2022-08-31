@@ -34,7 +34,7 @@ jobs:
       
       - name: Push Docker image to container registry (GCR)
         env:
-          GIT_TAG: v 0.1.0
+          GIT_TAG: v0.1.0
         run: |-
           docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
           docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
