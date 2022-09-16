@@ -17,8 +17,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 
 WORKDIR /app
 
-ENV ASPNETCORE_ENVIRONMENT Production
-ENV ASPNETCORE_URLS https://+;http://+
 EXPOSE 80
 EXPOSE 443
 
