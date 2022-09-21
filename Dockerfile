@@ -1,5 +1,5 @@
 # build stage
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
 
 WORKDIR /src
 
@@ -13,13 +13,12 @@ RUN mkdir dist
 RUN dotnet publish -c Release -o /dist
 
 # run stage
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 
 WORKDIR /app
 
-EXPOSE 80
-EXPOSE 443
-
-COPY --from=build /dist .
+EXPOSE 8080
+ENV ASPNETCORE_URLS=http://*:8080
+COPY --from=build ./dist .
 
 CMD ["dotnet", "FYRO.Duffer.API.dll"]
